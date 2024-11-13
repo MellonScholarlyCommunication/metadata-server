@@ -14,7 +14,12 @@ async function handle({path,options,config,notification}) {
     try {
         const artifact_id = notification['object']['id'];
 
-        const reference = await zoteroLookup(artifact_id);
+        const reference = await zoteroLookup(artifact_id, {
+            service: process.env.ZOTERO_SERVICE,
+            format: process.env.ZOTERO_FORMAT,
+            type: process.env.ZOTERO_CONTENT_TYPE,
+            fallback: process.env.ZOTERO_FALLBACK === 'true' ? true : false 
+        });
 
         if (! reference) {
             logger.error(`failed to find metadata for ${artifact_id}`);
@@ -27,7 +32,7 @@ async function handle({path,options,config,notification}) {
 
         ensureDirectoryExistence(filePath);
 
-        fs.writeFileSync(filePath,reference);
+        fs.writeFileSync(filePath,JSON.stringify(reference,null,2));
 
         const zotero_content_type = process.env.ZOTERO_CONTENT_TYPE || 'application/json';
 

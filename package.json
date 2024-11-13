@@ -8,6 +8,7 @@
   "scripts": {
     "post-data": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example.jsonld' http://localhost:8000/inbox/",
     "post-fail": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fail.jsonld' http://localhost:8000/inbox/",
+    "post-fallback": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fallback.jsonld' http://localhost:8000/inbox/",
     "handle-inbox": "npx ldn-inbox-server handler @inbox -hn @handler/notification_handler/multi.js",
     "handle-outbox": "npx ldn-inbox-server handler @outbox -hn @handler/notification_handler/multi.js",
     "server": "npx ldn-inbox-server start-server",
@@ -15,9 +16,11 @@
   },
   "dependencies": {
     "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
     "ldn-inbox-server": "^1.7.1",
     "log4js": "^6.9.1",
     "md5": "^2.3.0",
+    "memento-cli": "^1.0.3",
     "uuid": "^10.0.0"
   }
 }
