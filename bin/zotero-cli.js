@@ -7,8 +7,7 @@ require('dotenv').config();
 const ZOTERO_SERVICE = process.env.ZOTERO_SERVICE ?? 'http://127.0.0.1:1969';
 const ZOTERO_FORMAT = process.env.ZOTERO_FORMAT ?? 'csljson';
 const ZOTERO_CONTENT_TYPE = process.env.ZOTERO_CONTENT_TYPE ?? 'applicaiton/json';
-const ZOTERO_FALLBACK = process.env.ZOTERO_FALLBACK ?
-  ( process.env.ZOTERO_FALLBACK === 'true ' ? true : false ) : false ;
+const ZOTERO_FALLBACK = process.env.ZOTERO_FALLBACK ? (/true/).test(process.env.ZOTERO_FALLBACK) : false;
 
 program
   .name('zotero-cli')
