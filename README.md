@@ -1,6 +1,8 @@
 # Metadata Server
 
-An experimental Zotero Service Provider using the [Event Notification](https://www.eventnotifications.net) protocol.
+An experimental metadata Service Provider using the [Event Notification](https://www.eventnotifications.net) protocol.
+
+This services requires accesss to a [Zotero translator](https://github.com/zotero/translation-server) service.
 
 ## Install
 
@@ -28,13 +30,19 @@ Post an example that should result in successful lookup
 yarn run post-data 
 ```
 
-Post an example that should result in a failed lookup
+Post an example that should result in a failed lookup. In this example we are posting the none-existent URL https://lib.ugent.be/123. When `ZOTERO_FALLBACK` is set to `true` an attempt will be made to retrieve this URL via the Internet Archive (which should also fail).
 
 ```
 yarn run post-fail
 ```
 
-Example notification:
+Post an example that should result in a failed lookup when `ZOTERO_FALLBACK` is set to `false`. 
+
+```
+yarn run post-fallback
+```
+
+### Example notification
 
 ```
 {
@@ -63,7 +71,7 @@ where `$.object.id` is the URL for which a JSON CSL result should be created.
 yarn run handle-inbox
 ```
 
-Example outgoing notification:
+### Example outgoing notification
 
 ```
 {
@@ -88,7 +96,7 @@ Example outgoing notification:
 }
 ```
 
-Example service result:
+### Example service result
 
 ```
 [
@@ -138,3 +146,20 @@ yarn run handle-outbox
 ```
 yarn real-clean
 ```
+
+## Configuration parameters
+
+- `LOG4JS` : logging level
+- `LDN_SERVER_OTHER_CONFIG` : configuration file defining the inbox/outbox endpoints
+- `LDN_SERVER_INBOX_PATH` : local path to the inbox
+- `LDN_SERVER_OUTBOX_PATH` : local path to the outbox
+- `LDN_SERVER_PUBLIC_PATH` : local path to the public directory (serving documents)
+- `LDN_SERVER_INBOX_CONFIG` : configuration file defining the inbox handlers
+- `LDN_SERVER_OUTBOX_CONFIG` : configuration file defining the oubox handlers
+- `LDN_SERVER_BASEURL` : base URL of this metadata server
+- `ZOTERO_SERVICE` : Location of a Zotero translator service
+- `ZOTERO_FORMAT` : Requested format to return from the Zotero service
+- `ZOTERO_CONTENT_TYPE` : Requested content type for `ZOTERO_FORMAT`
+- `ZOTERO_FALLBACK` : Attempt to fallback to an Internet Archive lookup when an URL lookup fails
+
+The metadata server needs to be restarted when configuration parameters are updated.
