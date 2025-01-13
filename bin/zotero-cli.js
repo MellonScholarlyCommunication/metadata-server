@@ -25,6 +25,7 @@ program
     }
     catch (e) {
         console.error(`error: ${e.message}`);
+        process.exitCode = 2;
     }
   });
 
