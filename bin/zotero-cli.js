@@ -16,6 +16,7 @@ program
   .option('--format <format>','Zotero Format',ZOTERO_FORMAT)
   .option('--type <content_type>','Content Type',ZOTERO_CONTENT_TYPE)
   .option('-f,--fallback','Memento Fallback',ZOTERO_FALLBACK)
+  .option('--no-fallback')
   .option('-tmb,--timemapBase <base>','Memento Base')
   .argument('<url>', 'url to fetch')
   .action( async (url, options) => {
