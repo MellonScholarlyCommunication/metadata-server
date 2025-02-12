@@ -163,3 +163,23 @@ yarn real-clean
 - `ZOTERO_FALLBACK` : Attempt to fallback to an Internet Archive lookup when an URL lookup fails
 
 The metadata server needs to be restarted when configuration parameters are updated.
+
+## Docker
+
+We provide a Dockerized version of this software, that can be run with Docker Compose.
+
+Build the docker image and run Docker Compose:
+
+```
+docker compose up --build -d
+```
+
+The metadata-server is now available at http://localhost:3001.
+
+The zotero translation server is available at http://localhost:1969.
+
+Stop Docker compose:
+
+```
+docker compose down
+```

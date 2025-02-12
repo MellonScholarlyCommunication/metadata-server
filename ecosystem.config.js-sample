@@ -1,0 +1,16 @@
+module.exports = {
+  apps : [
+   {
+    name   : "metadata-server",
+    script : "LOG4JS=error yarn run server"
+   },
+   {
+    name   : "metadata-inbox",
+    script : "LOG4JS=info npx ldn-inbox-server handler @inbox -hn @handler/notification_handler/multi.js --loop" ,
+   },
+   {
+    name   : "metadata-outbox",
+    script : "LOG4JS=info npx ldn-inbox-server handler @outbox -hn @handler/notification_handler/multi.js --loop"
+   }
+  ]
+}

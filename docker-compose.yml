@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  metadata-server:
+    build: .
+    container_name: metadata-server
+    ports:
+      - "3001:3001"
+    depends_on:
+      - zotero
+    networks:
+      - app-network
+
+  zotero:
+    image: zotero/translation-server
+    container_name: zotero-translator
+    ports:
+      - "1969:1969"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -6,9 +6,9 @@
   "author": "Patrick Hochstenbach <Patrick.Hochstenbach@UGent.be>",
   "license": "MIT",
   "scripts": {
-    "post-data": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example.jsonld' http://localhost:8000/inbox/",
-    "post-fail": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fail.jsonld' http://localhost:8000/inbox/",
-    "post-fallback": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fallback.jsonld' http://localhost:8000/inbox/",
+    "post-data": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example.jsonld' http://localhost:3001/inbox/",
+    "post-fail": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fail.jsonld' http://localhost:3001/inbox/",
+    "post-fallback": "curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example_fallback.jsonld' http://localhost:3001/inbox/",
     "handle-inbox": "npx ldn-inbox-server handler @inbox -hn @handler/notification_handler/multi.js",
     "handle-outbox": "npx ldn-inbox-server handler @outbox -hn @handler/notification_handler/multi.js",
     "server": "npx ldn-inbox-server start-server",
