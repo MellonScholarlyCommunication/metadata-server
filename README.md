@@ -168,18 +168,28 @@ The metadata server needs to be restarted when configuration parameters are upda
 
 We provide a Dockerized version of this software, that can be run with Docker Compose.
 
-Build the docker image and run Docker Compose:
+### Submit a Notification
 
 ```
-docker compose up --build -d
+curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example.jsonld' http://localhost:3001/inbox/
 ```
 
-The metadata-server is now available at http://localhost:3001.
+## Docker 
 
-The zotero translation server is available at http://localhost:1969.
-
-Stop Docker compose:
+Build a version of a docker image:
 
 ```
-docker compose down
+docker build . -t hochstenbach/metadata-server:v0.0.1
+```
+
+Run a docker image:
+
+```
+docker container run -p 3001:3001 hochstenbach/metadata-server:v0.0.1
+```
+
+Push it to DockerHub:
+
+```
+docker push hochstenbach/metadata-server:v0.0.1
 ```

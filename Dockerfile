@@ -1,10 +1,8 @@
-FROM node:18-bullseye
+FROM node:18-alpine3.20
 
 ENV NODE_ENV=production
 
 WORKDIR /app
-
-RUN npm install -g pm2
 
 COPY .env-docker ./.env
 
@@ -12,7 +10,7 @@ COPY ecosystem.config.js-sample ./ecosystem.config.js
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm install -g pm2
 
 COPY . .
 
