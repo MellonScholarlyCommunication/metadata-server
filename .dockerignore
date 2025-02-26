@@ -5,4 +5,6 @@ Dockerfile
 .dockerignore
 .git
 .gitignore
+inbox
+outbox
 public/result

@@ -179,17 +179,17 @@ curl -X POST -H 'Content-Type: application/ld+json' --data-binary '@data/example
 Build a version of a docker image:
 
 ```
-docker build . -t hochstenbach/metadata-server:v0.0.1
+docker build . -t hochstenbach/metadata-server:v0.0.2
 ```
 
 Run a docker image:
 
 ```
-docker container run -p 3001:3001 hochstenbach/metadata-server:v0.0.1
+docker container run -p 3001:3001 --rm hochstenbach/metadata-server:v0.0.2
 ```
 
 Push it to DockerHub:
 
 ```
-docker push hochstenbach/metadata-server:v0.0.1
+docker push hochstenbach/metadata-server:v0.0.2
 ```

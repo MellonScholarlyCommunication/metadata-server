@@ -14,7 +14,7 @@ RUN npm install && npm install -g pm2
 
 COPY . .
 
-RUN mkdir ./public/result
+RUN mkdir ./public/result ./inbox ./outbox
 
 EXPOSE 3001
 
