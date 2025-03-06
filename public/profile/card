@@ -7,5 +7,5 @@
     foaf:primaryTopic <http://mycontributions.info/service/x/profile/card#me>.
 
 <http://mycontributions.info/service/x/profile/card#me>
-    foaf:name "Zotoro Web Service";
+    foaf:name "Metadata Web Service";
     a foaf:Person.
